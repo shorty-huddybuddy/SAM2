@@ -1,6 +1,4 @@
-
----
-
+```markdown
 # SAM2 Integration with Stretch3 Robot and RealSense Camera
 
 This repository contains code for integrating the **Segment Anything Model (SAM2)** with the **Stretch3 robot** using an **Intel RealSense camera** for image capture and segmentation purposes. The project involves camera access, segmentation tasks, and a parent process to synchronize multiple environments for smooth operation.
@@ -20,21 +18,32 @@ The objective of this project is to:
 
 ## Folder Structure  
 
-```
+```plaintext
 codes/
 │
 ├── Fine_tune_img_seg.ipynb           # Notebook to fine-tune SAM2 for image segmentation tasks.
-├── auto_segmentation.py             # Automates the segmentation process using SAM2.
-├── automatic_mask_generator_exa...  # Example script for generating masks using SAM2.
-├── camera_access.py                 # Code to access the RealSense camera for image capture.
-├── depth_sensing.py                 # Depth-sensing functionality using the RealSense camera.
-├── image_predictor_example.ipynb    # Example notebook for predicting segmented outputs.
-├── parent.py                        # Parent process for synchronizing two processes.
-├── segmentation.py                  # Code for performing segmentation on captured data.
-├── train_test_yolo.ipynb            # YOLO model training and testing integration (for comparison).
-├── use_trained_model.ipynb          # Notebook to use a pre-trained SAM2 model for segmentation.
-└── video_predictor_example.ipynb    # Example for performing segmentation on video inputs.
+├── auto_segmentation.py              # Automates the segmentation process using SAM2.
+├── automatic_mask_generator_exa...   # Example script for generating masks using SAM2.
+├── camera_access.py                  # Code to access the RealSense camera for image capture.
+├── depth_sensing.py                  # Depth-sensing functionality using the RealSense camera.
+├── image_predictor_example.ipynb     # Example notebook for predicting segmented outputs.
+├── parent.py                         # Parent process for synchronizing two processes.
+├── segmentation.py                   # Code for performing segmentation on captured data.
+├── train_test_yolo.ipynb             # YOLO model training and testing integration (for comparison).
+├── use_trained_model.ipynb           # Notebook to use a pre-trained SAM2 model for segmentation.
+└── video_predictor_example.ipynb     # Example for performing segmentation on video inputs.
 ```
+
+---
+
+## External Image Dataset  
+
+Due to the large size of the dataset, it is hosted externally.  
+
+You can download the image dataset from the following link:  
+[**Image Dataset Repository**](<INSERT_EXTERNAL_LINK_HERE>)
+
+Once downloaded, place the dataset in a folder named `dataset/` at the root of the project.
 
 ---
 
@@ -194,8 +203,7 @@ Contributions are welcome! Please create a pull request or open an issue to sugg
 ## Contact  
 
 For queries or collaborations, please contact:  
-**Dinesh Pradhan**  
-**Email**: iit2022219@iiita.ac.in  / iit2022218@iiita.ac.in 
-**GitHub**: [shorty-20](https://github.com/shorty-huddybuddy)  
-
----
+**[Your Name]**  
+**Email**: iit2022219@iiita.ac.in / iit20222218@iiita.ac.in  
+**GitHub**: [Your GitHub Profile](https://github.com/shorty-huddybuddy)
+```
