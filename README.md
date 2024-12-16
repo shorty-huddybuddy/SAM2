@@ -197,7 +197,7 @@ Contributions are welcome! Please create a pull request or open an issue to sugg
 ## Contact  
 
 For queries or collaborations, please contact:  
-**[Your Name]**  
-**Email**: iit2022219@iiita.ac.in / iit20222218@iiita.ac.in  
+**Group Delta**  
+**Email**: iit2022219@iiita.ac.in / iit20222218@iiita.ac.in  /iit20222192@iiita.ac.in  /iit20222194@iiita.ac.in  /iit20222170@iiita.ac.in  
 **GitHub**: [Your GitHub Profile](https://github.com/shorty-huddybuddy)
 ```
