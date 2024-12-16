@@ -1,5 +1,5 @@
 
-
+---
 
 # SAM2 Integration with Stretch3 Robot and RealSense Camera
 
@@ -20,7 +20,7 @@ The objective of this project is to:
 
 ## Folder Structure  
 
-
+```
 codes/
 │
 ├── Fine_tune_img_seg.ipynb           # Notebook to fine-tune SAM2 for image segmentation tasks.
@@ -34,7 +34,7 @@ codes/
 ├── train_test_yolo.ipynb            # YOLO model training and testing integration (for comparison).
 ├── use_trained_model.ipynb          # Notebook to use a pre-trained SAM2 model for segmentation.
 └── video_predictor_example.ipynb    # Example for performing segmentation on video inputs.
-
+```
 
 ---
 
@@ -194,16 +194,8 @@ Contributions are welcome! Please create a pull request or open an issue to sugg
 ## Contact  
 
 For queries or collaborations, please contact:  
-**[Your Name]**  
-**Email**: iit2022219@iiita.ac.in / iit20222218@iiita.ac.in / 
-**GitHub**: [Your GitHub Profile](https://github.com/shorty-huddybuddy)  
-```
+**Dinesh Pradhan**  
+**Email**: iit2022219@iiita.ac.in  / iit2022218@iiita.ac.in 
+**GitHub**: [shorty-20](https://github.com/shorty-huddybuddy)  
 
 ---
-
-### Key Updates:  
-1. Added **dual environment setup** for RealSense SDK (Python <=3.9) and SAM2 (Python >=3.10).  
-2. Included parent process synchronization details.  
-3. Provided clear workflow and step-by-step installation instructions.  
-
-Let me know if you need further refinements! 🚀
