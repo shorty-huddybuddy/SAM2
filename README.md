@@ -1,4 +1,4 @@
-```markdown
+
 # SAM2 Integration with Stretch3 Robot and RealSense Camera
 
 This repository contains code for integrating the **Segment Anything Model (SAM2)** with the **Stretch3 robot** using an **Intel RealSense camera** for image capture and segmentation purposes. The project involves camera access, segmentation tasks, and a parent process to synchronize multiple environments for smooth operation.
