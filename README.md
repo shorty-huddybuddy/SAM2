@@ -200,4 +200,3 @@ For queries or collaborations, please contact:
 **Group Delta**  
 **Email**: iit2022219@iiita.ac.in / iit20222218@iiita.ac.in  /iit20222192@iiita.ac.in  /iit20222194@iiita.ac.in  /iit20222170@iiita.ac.in  
 **GitHub**: [Your GitHub Profile](https://github.com/shorty-huddybuddy)
-```
