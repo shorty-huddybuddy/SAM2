@@ -41,7 +41,7 @@ codes/
 Due to the large size of the dataset, it is hosted externally.  
 
 You can download the image dataset from the following link:  
-[**Image Dataset Repository**](<INSERT_EXTERNAL_LINK_HERE>)
+[**Image Dataset Repository**](https://drive.google.com/drive/folders/1YyUG3ZhPNVQTlesTLxuc3DOpR6LcFvXv?usp=drive_link)
 
 Once downloaded, place the dataset in a folder named `dataset/` at the root of the project.
 
