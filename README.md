@@ -1,22 +1,25 @@
 
+
 # SAM2 Integration with Stretch3 Robot and RealSense Camera
 
-This repository contains code for integrating the **Segment Anything Model (SAM2)** with the **Stretch3 robot** using an **Intel RealSense camera** for image capture and segmentation purposes. The project involves camera access, segmentation tasks, and a parent process to synchronize multiple processes for smooth operation.
+This repository contains code for integrating the **Segment Anything Model (SAM2)** with the **Stretch3 robot** using an **Intel RealSense camera** for image capture and segmentation purposes. The project involves camera access, segmentation tasks, and a parent process to synchronize multiple environments for smooth operation.
 
 ---
 
-## Project Overview
+## Project Overview  
 
 The objective of this project is to:  
 - **Access RealSense Camera** for capturing live images or video.  
 - Perform **image segmentation** using the SAM2 model.  
-- **Synchronize processes** between camera operations and segmentation tasks using a parent process.
+- **Synchronize processes** between two Python environments:  
+   - **Environment 1**: For RealSense SDK (requires Python <= 3.9).  
+   - **Environment 2**: For SAM2 (requires Python >= 3.10).  
 
 ---
 
 ## Folder Structure  
 
-```
+
 codes/
 │
 ├── Fine_tune_img_seg.ipynb           # Notebook to fine-tune SAM2 for image segmentation tasks.
@@ -38,29 +41,68 @@ codes/
 
 ### Prerequisites  
 Ensure the following tools and libraries are installed:  
-- **Python 3.8+**  
+- **Python 3.9** (for RealSense SDK and PyRealSense2)  
+- **Python 3.10+** (for SAM2)  
 - **Intel RealSense SDK**  
 - **PyRealSense2** for camera interfacing  
 - **Segment Anything Model (SAM2)**  
 - **OpenCV** for image and video processing  
 
-### Installation Steps  
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/your-username/sam2-stretch3-integration.git
-   cd sam2-stretch3-integration/codes
-   ```
+---
 
-2. Install dependencies:  
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Step 1: Create Two Python Environments  
 
-3. Verify RealSense camera connection:  
-   Run `camera_access.py` to confirm camera functionality.  
+We need two separate environments:  
+1. **Environment 1 (Python 3.9)**: For RealSense SDK.  
+2. **Environment 2 (Python 3.10)**: For SAM2.  
+
+#### Create Environment 1 (For RealSense SDK)  
+```bash
+conda create -n realsense_env python=3.9
+conda activate realsense_env
+pip install pyrealsense2 opencv-python numpy
+```
+
+#### Create Environment 2 (For SAM2 Integration)  
+```bash
+conda create -n sam2_env python=3.10
+conda activate sam2_env
+pip install torch torchvision segment-anything-model matplotlib opencv-python numpy
+```
+
+---
+
+### Step 2: Verify Installation  
+
+1. **Test RealSense Camera**:  
+   Run the `camera_access.py` script in the **`realsense_env`** environment:  
    ```bash
+   conda activate realsense_env
    python camera_access.py
    ```
+
+2. **Test SAM2 Integration**:  
+   Run the `segmentation.py` script in the **`sam2_env`** environment:  
+   ```bash
+   conda activate sam2_env
+   python segmentation.py
+   ```
+
+---
+
+### Step 3: Synchronize Processes with `parent.py`  
+
+The `parent.py` script ensures that both environments work together by synchronizing the processes:  
+- **RealSense camera** captures images in Environment 1.  
+- **SAM2 model** performs segmentation in Environment 2.  
+
+#### Run Synchronization Script  
+```bash
+conda activate realsense_env
+python parent.py
+```
+
+The parent script will manage both processes. Ensure that both environments (`realsense_env` and `sam2_env`) are correctly configured.
 
 ---
 
@@ -70,27 +112,26 @@ Ensure the following tools and libraries are installed:
 Use `camera_access.py` to capture real-time images or videos from the RealSense D435i camera.  
 
 ### 2. **Running Image Segmentation**  
-To perform SAM2-based segmentation:  
-   ```bash
-   python segmentation.py
-   ```
+To perform SAM2-based segmentation, activate the SAM2 environment and run:  
+```bash
+conda activate sam2_env
+python segmentation.py
+```
 
-### 3. **Synchronizing Processes**  
-The `parent.py` script synchronizes the camera access and segmentation processes for smooth operation. Run it as follows:  
-   ```bash
-   python parent.py
-   ```
-
-### 4. **Fine-Tuning or Using Pre-Trained Models**  
-- Use **Fine_tune_img_seg.ipynb** to fine-tune SAM2 on custom datasets.  
-- Use **use_trained_model.ipynb** to apply pre-trained models for segmentation.  
+### 3. **Synchronizing Both Processes**  
+Run `parent.py` in the **`realsense_env`** environment to synchronize RealSense and SAM2:  
+```bash
+conda activate realsense_env
+python parent.py
+```
 
 ---
 
 ## Key Features  
 
+- **Dual Environment Management**: Separate environments for RealSense (<=3.9) and SAM2 (>=3.10).  
 - **Real-Time Camera Integration**: Access the Intel RealSense camera for live image and depth sensing.  
-- **SAM2 Integration**: Segment captured images and videos using the SAM2 model.  
+- **SAM2 Integration**: Perform robust segmentation on captured images and videos.  
 - **Process Synchronization**: Ensure seamless coordination between image capture and segmentation using a parent process.  
 - **Extensibility**: Includes additional scripts for YOLO-based segmentation for comparison.  
 
@@ -99,13 +140,12 @@ The `parent.py` script synchronizes the camera access and segmentation processes
 ## Dependencies  
 
 - Python Libraries:  
-  - PyRealSense2  
+  - PyRealSense2 (for Python 3.9)  
   - OpenCV  
   - NumPy  
-  - PyTorch  
-  - Matplotlib  
+  - PyTorch (for Python 3.10+)  
+  - SAM2 Libraries  
 - Intel RealSense SDK  
-- SAM2 Model  
 
 Install dependencies using:  
 ```bash
@@ -116,17 +156,17 @@ pip install -r requirements.txt
 
 ## Example Workflow  
 
-1. **Capture Images**:  
-   Run `camera_access.py` to capture input images.  
+1. **Capture Images** (Environment 1):  
+   Run `camera_access.py` to capture input images using RealSense.  
 
-2. **Segment Images**:  
+2. **Segment Images** (Environment 2):  
    Use `segmentation.py` to apply SAM2 for segmentation.  
 
 3. **Synchronize Operations**:  
    Run `parent.py` to coordinate camera input and SAM2 processing.  
 
 4. **Visualize Results**:  
-   Display segmented masks and outputs using `video_predictor_example.ipynb`.  
+   Display segmented outputs using `video_predictor_example.ipynb`.  
 
 ---
 
@@ -153,9 +193,16 @@ Contributions are welcome! Please create a pull request or open an issue to sugg
 ## Contact  
 
 For queries or collaborations, please contact:  
-
-**Email**: iit2022219@iiita.ac.in / iit2022218@iiita.ac.in 
-**GitHub**: [Your GitHub Profile](https://github.com/shorty-huddybuddy)  
+**[Your Name]**  
+**Email**: your.email@example.com  
+**GitHub**: [Your GitHub Profile](https://github.com/your-username)  
 ```
 
-This `README.md` file provides all the necessary details for users and contributors to understand and use the project effectively. Let me know if you'd like to add more sections!
+---
+
+### Key Updates:  
+1. Added **dual environment setup** for RealSense SDK (Python <=3.9) and SAM2 (Python >=3.10).  
+2. Included parent process synchronization details.  
+3. Provided clear workflow and step-by-step installation instructions.  
+
+Let me know if you need further refinements! 🚀
