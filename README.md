@@ -13,6 +13,12 @@ Here are some sample outputs from the SAM2 integration with the RealSense camera
   <img src="results/original.png" alt="Segmentation Result 1" width="45%"/>
   <img src="results/segmented.png" alt="Segmentation Result 2" width="45%"/>
 </p>
+
+### some more results
+<p align="center">
+  <img src="results/result1.png" alt="Segmentation Result 1" width="45%"/>
+  <img src="results/result2.png" alt="Segmentation Result 2" width="45%"/>
+</p>
 --- 
 
 ## Project Overview  
