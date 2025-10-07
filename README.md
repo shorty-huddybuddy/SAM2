@@ -5,6 +5,16 @@ This repository contains code for integrating the **Segment Anything Model (SAM2
 
 ---
 
+## 🖼️ Results
+
+Here are some sample outputs from the SAM2 integration with the RealSense camera:
+
+<p align="center">
+  <img src="results/original.png" alt="Segmentation Result 1" width="45%"/>
+  <img src="results/segmented.png" alt="Segmentation Result 2" width="45%"/>
+</p>
+--- 
+
 ## Project Overview  
 
 The objective of this project is to:  
